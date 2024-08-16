@@ -1,17 +1,10 @@
-$(document).ready(function() {
-    // Smooth scroll for navigation links
-    $('.navigation a').click(function(event) {
-        event.preventDefault();
-        var target = $(this).attr('href');
-        $('html, body').animate({
-            scrollTop: $(target).offset().top
-        }, 600);
-    });
+// Initialize Three.js scene
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.getElementById('scene-container').appendChild(renderer.domElement);
 
-    // Example: Show/hide sections
-    $('.navigation a').click(function() {
-        $('.hidden-content').hide();
-        var target = $(this).attr('href');
-        $(target).show();
-    });
-});
+// Create a 3D cube
+const geometry = new THREE.BoxGeometry();
+const material = new THREE.MeshBasicMaterial({ color: 0x44aa
