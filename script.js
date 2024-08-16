@@ -1,1 +1,17 @@
-// Reveal Hidden Content on Scroll $(window).scroll(function() { $('.hidden-content').each(function() { if ($(this).offset().top < $(window).scrollTop() + $(window).height()) { $(this).addClass('visible'); } }); }); // Navigation Hover Effects $(document).ready(function() { $('.nav-item').hover(function() { $(this).css('transform', 'scale(1.1)'); }, function() { $(this).css('transform', 'scale(1)'); }); });
+$(document).ready(function() {
+    // Smooth scroll for navigation links
+    $('.navigation a').click(function(event) {
+        event.preventDefault();
+        var target = $(this).attr('href');
+        $('html, body').animate({
+            scrollTop: $(target).offset().top
+        }, 600);
+    });
+
+    // Example: Show/hide sections
+    $('.navigation a').click(function() {
+        $('.hidden-content').hide();
+        var target = $(this).attr('href');
+        $(target).show();
+    });
+});
